@@ -13,7 +13,7 @@ export const HomePage = () => {
           <a href="#">Primera clase</a>
           <a href="#">Contacto</a>
         </header>
-        <h1>La mejor aerolinea. Los mejores vuelos.</h1>
+        <h1>Los mejores vuelos.</h1>
         <FlightSelector />
       </div>
     </div>
