@@ -1,0 +1,14 @@
+.container {
+  background-color: rgba(196, 205, 213, 0.6);
+  backdrop-filter: blur(5px);
+  position: absolute;
+  width: 80%;
+  height: 120px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: -50px;
+  border-radius: 18px;
+  padding: 25px;
+}

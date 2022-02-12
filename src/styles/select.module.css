@@ -1,0 +1,43 @@
+.input {
+  font-family: sans-serif;
+  height: 55px;
+  width: 100%;
+  padding: 10px 15px;
+  max-width: 200px;
+  border-radius: 18px;
+  background-color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.input:hover {
+  cursor: pointer;
+}
+.inputOpen {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.listContainer {
+  background-color: white;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-bottom-right-radius: 18px;
+  border-bottom-left-radius: 18px;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+.listContainer span {
+  /* background-color: lightgreen; */
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: #666;
+}
+.listContainer span:hover {
+  background-color: lightblue;
+  cursor: pointer;
+}
