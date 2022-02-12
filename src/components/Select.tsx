@@ -6,12 +6,14 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 interface SelectProps {
   options: any;
+  title: string;
+  label: string;
   handleSelected: (selected: any) => void;
 }
 
 export const Select: FC<SelectProps> = (props) => {
-  const { options, handleSelected } = props;
-  const { input, listContainer, inputOpen } = styles;
+  const { options, handleSelected, title, label } = props;
+  const { input, listContainer, inputOpen, inputContainer } = styles;
   const [open, setopen] = useState(false);
   const [selected, setselected] = useState<any>();
   const inp = useRef<any>();
@@ -23,7 +25,12 @@ export const Select: FC<SelectProps> = (props) => {
   };
 
   const handleSelect = (opt: string) => {
-    setselected(opt);
+    setselected((prev: any) => {
+      if (prev === opt) {
+        setopen(false);
+        return prev;
+      } else return opt;
+    });
   };
 
   useEffect(() => {
@@ -37,25 +44,35 @@ export const Select: FC<SelectProps> = (props) => {
   }, [selected, handleSelected]);
 
   return (
-    <div
-      className={clsx(input, open && inputOpen)}
-      onClick={() => setopen(true)}
-      ref={inp}
-    >
-      {selected ?? <p style={{ color: "#666" }}>Origen</p>}
-      <FontAwesomeIcon style={{ marginLeft: "auto" }} icon={faAngleDown} />
-      {open && (
-        <div
-          className={listContainer}
-          style={{ bottom: -(options.length * 30 + 10) }}
-        >
-          {options.map((opt: string, ind: number) => (
-            <span key={opt + ind} onClick={() => handleSelect(opt)}>
-              {opt}
-            </span>
-          ))}
-        </div>
-      )}
+    <div className={inputContainer}>
+      <p>{title}</p>
+      <div
+        className={clsx(input, open && inputOpen)}
+        onClick={() => setopen(true)}
+        ref={inp}
+      >
+        {selected ?? <p style={{ color: "#666" }}>{label}</p>}
+        <FontAwesomeIcon
+          style={{
+            marginLeft: "auto",
+            transition: "transform 300ms ease",
+            transform: open ? "rotate(180deg)" : "rotate(0)",
+          }}
+          icon={faAngleDown}
+        />
+        {open && (
+          <div
+            className={listContainer}
+            style={{ bottom: -(options.length * 30 + 10) }}
+          >
+            {options.map((opt: string, ind: number) => (
+              <span key={opt + ind} onClick={() => handleSelect(opt)}>
+                {opt}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

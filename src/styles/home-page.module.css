@@ -1,17 +1,19 @@
 .homeContainer {
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
   padding: 15px;
   min-height: 100vh;
 }
 
 .portada {
-  background-color: cadetblue;
+  background-image: url("../assets/images/portada.jpg");
+  background-size: cover;
   width: 100%;
   max-width: 1400px;
   margin: auto;
   padding-bottom: 70px;
   border-radius: 12px;
   position: relative;
+  height: 450px;
 }
 
 .portada h1 {
@@ -21,7 +23,7 @@
 }
 
 .header {
-  background-color: lightcoral;
+  /* background-color: lightcoral; */
   padding: 30px 25px;
   display: flex;
   align-items: center;
