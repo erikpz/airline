@@ -41,6 +41,10 @@
   display: block;
 }
 
+.header a:hover {
+  text-decoration: underline;
+}
+
 .header span {
   font-weight: 800;
   font-size: 1.1rem;
@@ -48,6 +52,10 @@
 
 .header span:nth-child(2) {
   display: none;
+}
+
+.header span:nth-child(2):hover {
+  cursor: pointer;
 }
 
 .header a:first-of-type {

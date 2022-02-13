@@ -8,7 +8,7 @@ interface SelectProps {
   options: any;
   title: string;
   label: string;
-  handleSelected: (selected: any) => void;
+  handleSelected?: (selected: any) => void;
 }
 
 export const Select: FC<SelectProps> = (props) => {
@@ -31,6 +31,7 @@ export const Select: FC<SelectProps> = (props) => {
         return prev;
       } else return opt;
     });
+    handleSelected && handleSelected(opt);
   };
 
   useEffect(() => {
@@ -40,7 +41,6 @@ export const Select: FC<SelectProps> = (props) => {
 
   useEffect(() => {
     setopen(false);
-    handleSelected(selected);
   }, [selected, handleSelected]);
 
   return (
