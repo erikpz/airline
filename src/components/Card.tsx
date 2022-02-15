@@ -33,7 +33,7 @@ export const Card: FC<CardProps> = (props) => {
       return { ...s, amount: 0 };
     });
     setschedule({ day: flight.day, schedule: newSche });
-    dispatch(setReservation({ day: schedule.day, schedule: reserv }));
+    dispatch(setReservation([{ day: schedule.day, schedule: reserv }]));
     navigate("/cart");
   };
 

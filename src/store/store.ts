@@ -46,6 +46,9 @@ const citiesSlice = createSlice({
     setReservation: (state: any, action: any) => {
       state.reservations = action.payload;
     },
+    resetReservation: (state: any) => {
+      state.reservations = [];
+    },
   },
   extraReducers: {
     [fetchDestinations.pending as any]: (state: any) => {
@@ -62,8 +65,13 @@ const citiesSlice = createSlice({
   },
 });
 
-const { setCities, setOrigin, setDestination, setReservation } =
-  citiesSlice.actions;
+const {
+  setCities,
+  setOrigin,
+  setDestination,
+  setReservation,
+  resetReservation,
+} = citiesSlice.actions;
 const citiesReducer = citiesSlice.reducer;
 
 const store = configureStore({
@@ -72,4 +80,11 @@ const store = configureStore({
   },
 });
 
-export { store, setCities, setOrigin, setDestination, setReservation };
+export {
+  store,
+  setCities,
+  setOrigin,
+  setDestination,
+  setReservation,
+  resetReservation,
+};
