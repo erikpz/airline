@@ -49,6 +49,9 @@ const citiesSlice = createSlice({
     resetReservation: (state: any) => {
       state.reservations = [];
     },
+    deleteReservation: (state: any) => {
+      state.reservations = state.reservations;
+    },
   },
   extraReducers: {
     [fetchDestinations.pending as any]: (state: any) => {
@@ -71,6 +74,7 @@ const {
   setDestination,
   setReservation,
   resetReservation,
+  deleteReservation,
 } = citiesSlice.actions;
 const citiesReducer = citiesSlice.reducer;
 
@@ -87,4 +91,5 @@ export {
   setDestination,
   setReservation,
   resetReservation,
+  deleteReservation,
 };

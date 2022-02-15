@@ -18,7 +18,9 @@ export const CartPage = () => {
     });
     return total;
   };
-  const handleDelete = (item: any) => {};
+  const handleDelete = (day: string, sch: any) => {
+    console.log(day, sch);
+  };
   const handleDeleteAll = () => {
     dispatch(resetReservation());
   };
@@ -45,7 +47,7 @@ export const CartPage = () => {
                     <p>Costo por boleto: $ {s.price} MXN</p>
                     <p>Numero de personas: {s.amount}</p>
                     <p>Total: $ {s.amount * s.price} MXN</p>
-                    <button>
+                    <button onClick={() => handleDelete(res.day, s)}>
                       <FontAwesomeIcon icon={faTrash} />
                     </button>
                   </div>
