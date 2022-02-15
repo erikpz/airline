@@ -25,11 +25,12 @@ export const FlightSelector = () => {
 
   const handleSearch = () => {
     if (state.destinations.origin && state.destinations.destination) {
-      const dest = state.destinations.cities.find(
-        (c: any) => c.city === state.destinations.destination
-      );
-      console.log(dest);
-      dispatch(setDestination(dest));
+      if (typeof state.destinations.destination === "string") {
+        const dest = state.destinations.cities.find(
+          (c: any) => c.city === state.destinations.destination
+        );
+        dispatch(setDestination(dest));
+      }
     }
   };
 

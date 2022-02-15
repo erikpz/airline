@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { FlightSelector } from "../components/FlightSelector";
 import styles from "../styles/home-page.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faPlane } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faPlane,
+  faCartShopping,
+} from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDestinations } from "../store/store";
 import { CardsList } from "../components/CardsList";
@@ -28,9 +32,9 @@ export const HomePage = () => {
           <span style={{ marginLeft: "auto" }}>
             <FontAwesomeIcon icon={faBars} />
           </span>
-          <a href="##">Clase negocios</a>
-          <a href="##">Primera clase</a>
+          <a href="##">Clases</a>
           <a href="##">Contacto</a>
+          <FontAwesomeIcon icon={faCartShopping} style={{ marginLeft: 10 }} />
         </header>
         <h1>Los mejores vuelos.</h1>
         <FlightSelector />

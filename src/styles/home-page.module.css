@@ -32,7 +32,7 @@
   display: flex;
   height: 81;
   align-items: center;
-  gap: 45px;
+  gap: 25px;
 }
 
 .header a {
@@ -71,6 +71,7 @@
 @media (max-width: 700px) {
   .header {
     padding: 30px 25px;
+    gap:10px
   }
   .header a {
     display: none;

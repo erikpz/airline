@@ -11,6 +11,7 @@ const citiesState = {
   error: "",
   origin: "",
   destination: "",
+  reservations: [],
 };
 
 export const fetchDestinations = createAsyncThunk(
@@ -42,6 +43,9 @@ const citiesSlice = createSlice({
     setDestination: (state: any, action: any) => {
       state.destination = action.payload;
     },
+    setReservation: (state: any, action: any) => {
+      state.reservations = action.payload;
+    },
   },
   extraReducers: {
     [fetchDestinations.pending as any]: (state: any) => {
@@ -58,7 +62,8 @@ const citiesSlice = createSlice({
   },
 });
 
-const { setCities, setOrigin, setDestination } = citiesSlice.actions;
+const { setCities, setOrigin, setDestination, setReservation } =
+  citiesSlice.actions;
 const citiesReducer = citiesSlice.reducer;
 
 const store = configureStore({
@@ -67,4 +72,4 @@ const store = configureStore({
   },
 });
 
-export { store, setCities, setOrigin, setDestination };
+export { store, setCities, setOrigin, setDestination, setReservation };

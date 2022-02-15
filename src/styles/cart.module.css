@@ -1,0 +1,21 @@
+.cartContainer {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.cartContainer p:nth-child(1) {
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 50px auto;
+}
+
+.cart {
+  border-radius: 18px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px 50px;
+}

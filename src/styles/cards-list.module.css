@@ -2,7 +2,7 @@
   /*  background-color: lightblue; */
   width: 100%;
   max-width: 1400px;
-  margin: 100px auto 0 auto;
+  margin: 150px auto 100px auto;
   padding: 0px 20px;
   display: flex;
   gap: 20px;
@@ -14,9 +14,10 @@
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   width: 100%;
   max-width: 250px;
-  height: 300px;
+  min-height: 320px;
   border-radius: 12px;
   padding: 25px 15px;
+  border: 1px solid #ccc;
 }
 .card > p:first-of-type {
   font-size: 1.1rem;
@@ -25,24 +26,60 @@
   padding-bottom: 15px;
   border-bottom: 1px solid #ccc;
   color: #777;
+  margin-bottom: 10px;
 }
 
 .cardRow {
   display: flex;
-  flex-direction: column;
   padding: 15px 10px;
 }
 .cardRow p {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
+}
+.cardRow div:nth-child(2) {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}
+.cardRow div:nth-child(2) p {
+  padding: 0 5px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.cardRow div:nth-child(2) button {
+  font-size: 1rem;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: lightcoral;
+  color: white;
+}
+.cardRow div:nth-child(2) button:hover {
+  cursor: pointer;
+}
+.addCart {
+  border: none;
+  color: whitesmoke;
+  display: block;
+  border-radius: 12px;
+  background-color: rgb(42, 110, 165);
+  padding: 10px 15px;
+  margin: 12px auto;
+  font-weight: 600;
+}
+.addCart:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 904px) {
   .container {
-    margin-top: 160px;
+    margin-top: 180px;
   }
 }
 @media (max-width: 699px) {
   .container {
-    margin-top: 260px;
+    margin-top: 290px;
   }
 }
