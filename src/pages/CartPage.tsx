@@ -1,8 +1,11 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../components/Button";
+import { FormUser } from "../components/FormUser";
+import { Modal } from "../components/Modal";
 import { deleteReservation, resetReservation } from "../store/store";
 import styles from "../styles/cart.module.css";
 
@@ -17,6 +20,7 @@ export const CartPage = () => {
     button,
   } = styles;
   const state = useSelector((state: any) => state);
+  const [openModal, setopenModal] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   console.log(state);
@@ -38,9 +42,11 @@ export const CartPage = () => {
     return (
       <div className={emptyCart}>
         <p style={{ color: "#888", fontSize: "2rem" }}>Carrito vacio</p>
-        <button onClick={() => navigate("/")} className={button}>
-          Regresar
-        </button>
+        <Button
+          text="Regresar"
+          onClick={() => navigate("/")}
+          style={{ width: 120, margin: "0 auto" }}
+        />
       </div>
     );
   }
@@ -79,12 +85,26 @@ export const CartPage = () => {
           <p>$ {getTotal()} MXN</p>
         </div>
         <div className={buttonContainer}>
-          <button onClick={handleDeleteAll} className={button}>
-            Borrar todo
-          </button>
-          <button className={button}>Confirmar reserva</button>
+          <Button
+            style={{ width: "120px", fontSize: 14, margin: 0 }}
+            onClick={handleDeleteAll}
+            text="Borrar todo"
+          />
+          <Button
+            style={{ width: "120px", fontSize: 14, margin: 0 }}
+            onClick={() => setopenModal(true)}
+            text="Confirmar"
+          />
         </div>
       </div>
+      <Modal
+        title="Confirmar reserva"
+        text="Ingrese sus datos para confirmar"
+        open={openModal}
+        onOpen={setopenModal}
+      >
+        <FormUser handleOpen={setopenModal} />
+      </Modal>
     </div>
   );
 };

@@ -1,0 +1,50 @@
+.modalContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(29, 29, 29, 0.5);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: whitesmoke;
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.modal h3 {
+  font-size: 2rem;
+  text-align: center;
+  margin: 15px 0;
+}
+
+.modal p {
+  font-size: 1rem;
+  text-align: center;
+  color: #888;
+}
+
+.btnClose {
+  position: absolute;
+  font-size: 1.3rem;
+  top: 7px;
+  right: 7px;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.btnClose:hover {
+  cursor: pointer;
+}

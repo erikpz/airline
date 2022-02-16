@@ -1,0 +1,24 @@
+.form {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form input {
+  border: 1px solid #888;
+  padding: 15px 20px;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 250px;
+}
+.form input:focus-visible {
+  outline: none;
+}
+
+.error {
+  border: 1px solid tomato;
+}
