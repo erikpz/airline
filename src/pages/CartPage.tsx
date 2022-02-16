@@ -10,14 +10,8 @@ import { deleteReservation, resetReservation } from "../store/store";
 import styles from "../styles/cart.module.css";
 
 export const CartPage = () => {
-  const {
-    cartContainer,
-    cart,
-    title,
-    day,
-    emptyCart,
-    buttonContainer
-  } = styles;
+  const { cartContainer, cart, title, day, emptyCart, buttonContainer } =
+    styles;
   const state = useSelector((state: any) => state);
   const [openModal, setopenModal] = useState(false);
   const dispatch = useDispatch();
