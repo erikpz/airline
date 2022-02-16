@@ -23,7 +23,7 @@ export const FormUser: FC<FormUserProps> = (props) => {
     handleOpen(false);
     Swal.fire({
       title: "Reservado",
-      text: "Se reservó correctamente",
+      text: "Gracias por su reserva",
       icon: "success",
       confirmButtonText: "Ok",
     }).then(() => navigate("/"));
