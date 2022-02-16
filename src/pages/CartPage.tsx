@@ -2,13 +2,23 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { resetReservation } from "../store/store";
+import { useNavigate } from "react-router-dom";
+import { deleteReservation, resetReservation } from "../store/store";
 import styles from "../styles/cart.module.css";
 
 export const CartPage = () => {
-  const { cartContainer, cart, title, day } = styles;
+  const {
+    cartContainer,
+    cart,
+    title,
+    day,
+    emptyCart,
+    buttonContainer,
+    button,
+  } = styles;
   const state = useSelector((state: any) => state);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   console.log(state);
   const getTotal = () => {
     const res = state.destinations.reservations.map((r: any) => r.schedule);
@@ -18,14 +28,21 @@ export const CartPage = () => {
     });
     return total;
   };
-  const handleDelete = (day: string, sch: any) => {
-    console.log(day, sch);
+  const handleDelete = (day: string, schedule: any) => {
+    dispatch(deleteReservation({ day, schedule }));
   };
   const handleDeleteAll = () => {
     dispatch(resetReservation());
   };
   if (state.destinations.reservations.length <= 0) {
-    return <p>Carrito vacio</p>;
+    return (
+      <div className={emptyCart}>
+        <p style={{ color: "#888", fontSize: "2rem" }}>Carrito vacio</p>
+        <button onClick={() => navigate("/")} className={button}>
+          Regresar
+        </button>
+      </div>
+    );
   }
   return (
     <div className={cartContainer}>
@@ -61,9 +78,11 @@ export const CartPage = () => {
           <p style={{ fontStyle: "oblique" }}>Total global:</p>
           <p>$ {getTotal()} MXN</p>
         </div>
-        <div>
-          <button onClick={handleDeleteAll}>Borrar todo</button>
-          <button>Confirmar reserva</button>
+        <div className={buttonContainer}>
+          <button onClick={handleDeleteAll} className={button}>
+            Borrar todo
+          </button>
+          <button className={button}>Confirmar reserva</button>
         </div>
       </div>
     </div>

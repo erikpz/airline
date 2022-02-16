@@ -54,6 +54,35 @@
   cursor: pointer;
 }
 
+.emptyCart {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 25px;
+  margin: 55px 0 15px 0;
+}
+
+.button {
+  border: none;
+  background-color: lightcoral;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 18px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
 @media (max-width: 825px) {
   .day > div {
     flex-direction: column;

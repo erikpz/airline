@@ -49,8 +49,18 @@ const citiesSlice = createSlice({
     resetReservation: (state: any) => {
       state.reservations = [];
     },
-    deleteReservation: (state: any) => {
-      state.reservations = state.reservations;
+    deleteReservation: (state: any, action: any) => {
+      const filter = state.reservations.map((r: any) => {
+        if (action.payload.day === r.day) {
+          const nf = r.schedule.filter(
+            (s: any) => s.hour !== action.payload.schedule.hour
+          );
+          return { day: r.day, schedule: nf };
+        }
+        return r;
+      });
+      const x = filter.filter((fil: any) => fil.schedule.length > 0);
+      state.reservations = x;
     },
   },
   extraReducers: {
