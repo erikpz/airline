@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setReservation } from "../store/store";
 import styles from "../styles/cards-list.module.css";
+import { Button } from "./Button";
+import { Modal } from "./Modal";
 
 interface CardProps {
   flight: any;
@@ -14,13 +16,16 @@ export const Card: FC<CardProps> = (props) => {
   const [schedule, setschedule] = useState<any>();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [open, setopen] = useState(false);
   const handleAmount = (i: number, op: string) => {
     const reserv = schedule.schedule.map((s: any, ind: number) => {
       if (ind === i) {
         if (op === "+") {
           return { ...s, amount: s.amount + 1 };
         }
-        return { ...s, amount: s.amount - 1 };
+        if (s.amount > 0) {
+          return { ...s, amount: s.amount - 1 };
+        }
       }
       return s;
     });
@@ -29,12 +34,12 @@ export const Card: FC<CardProps> = (props) => {
 
   const handdleAddCart = () => {
     const reserv = schedule.schedule.filter((s: any) => s.amount > 0);
-    const newSche = flight.schedule.map((s: any) => {
-      return { ...s, amount: 0 };
-    });
-    setschedule({ day: flight.day, schedule: newSche });
-    dispatch(setReservation([{ day: schedule.day, schedule: reserv }]));
-    navigate("/cart");
+    if (reserv.length > 0) {
+      dispatch(setReservation([{ day: schedule.day, schedule: reserv }]));
+      navigate("/cart");
+    } else {
+      setopen(true);
+    }
   };
 
   useEffect(() => {
@@ -66,6 +71,18 @@ export const Card: FC<CardProps> = (props) => {
       <button className={addCart} onClick={handdleAddCart}>
         Agregar al carrito
       </button>
+      <Modal
+        title="Operación inválida"
+        text="Debes agregar al menos un boleto para reservar"
+        open={open}
+        onOpen={setopen}
+      >
+        <Button
+          text="Ok"
+          onClick={() => setopen(false)}
+          style={{ margin: "30px auto 0 auto", width: 120 }}
+        />
+      </Modal>
     </div>
   );
 };

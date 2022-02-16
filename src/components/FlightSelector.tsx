@@ -4,6 +4,7 @@ import { setDestination, setOrigin } from "../store/store";
 import styles from "../styles/flight-selector.module.css";
 import { Button } from "./Button";
 import { Select } from "./Select";
+import { Spinner } from "./Spinner";
 
 export const FlightSelector = () => {
   const { container } = styles;
@@ -36,19 +37,29 @@ export const FlightSelector = () => {
 
   return (
     <div className={container}>
-      <Select
-        options={listOrigin}
-        handleSelected={handleOriginSelected}
-        title="Desde"
-        label="Origen"
-      />
-      <Select
-        options={getDestList()}
-        handleSelected={handleDestinationSelected}
-        title="Hasta"
-        label="Destino"
-      />
-      <Button text="Buscar" onClick={handleSearch} style={{ maxWidth: 200 }} />
+      {state.destinations.loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <Select
+            options={listOrigin}
+            handleSelected={handleOriginSelected}
+            title="Desde"
+            label="Origen"
+          />
+          <Select
+            options={getDestList()}
+            handleSelected={handleDestinationSelected}
+            title="Hasta"
+            label="Destino"
+          />
+          <Button
+            text="Buscar"
+            onClick={handleSearch}
+            style={{ maxWidth: 200 }}
+          />
+        </>
+      )}
     </div>
   );
 };

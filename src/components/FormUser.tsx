@@ -28,23 +28,28 @@ export const FormUser: FC<FormUserProps> = (props) => {
       confirmButtonText: "Ok",
     }).then(() => navigate("/"));
   };
-  console.log(errors);
   return (
     <div className={form}>
       <input
+        className={clsx(errors.name && error)}
         placeholder="Nombre(s)*"
         {...register("name", { required: true })}
       />
       <input
-        className={error}
+        className={clsx(errors.lastname && error)}
         placeholder="Apellidos*"
         {...register("lastname", { required: true })}
       />
       <input
+        className={clsx(errors.address && error)}
         placeholder="Domicilio*"
         {...register("address", { required: true })}
       />
-      <input placeholder="Email*" {...register("email", { required: true })} />
+      <input
+        className={clsx(errors.email && error)}
+        placeholder="Email*"
+        {...register("email", { required: true })}
+      />
       {Object.keys(errors).length > 0 && (
         <p style={{ color: "tomato", fontSize: 12 }}>Campos obligatorios*</p>
       )}

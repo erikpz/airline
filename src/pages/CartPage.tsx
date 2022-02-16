@@ -16,8 +16,7 @@ export const CartPage = () => {
     title,
     day,
     emptyCart,
-    buttonContainer,
-    button,
+    buttonContainer
   } = styles;
   const state = useSelector((state: any) => state);
   const [openModal, setopenModal] = useState(false);

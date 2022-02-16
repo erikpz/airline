@@ -20,5 +20,6 @@
 }
 
 .error {
-  border: 1px solid tomato;
+  border: none;
+  outline: 2px solid tomato;
 }

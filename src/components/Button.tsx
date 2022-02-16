@@ -5,13 +5,14 @@ interface ButtonProps {
   text: string;
   onClick: () => void;
   style?: any;
+  disabled?: boolean;
 }
 
 export const Button: FC<ButtonProps> = (props) => {
   const { button: btn } = styles;
-  const { text, onClick, style } = props;
+  const { text, onClick, style, disabled } = props;
   return (
-    <button className={btn} style={style} onClick={onClick}>
+    <button className={btn} style={style} onClick={onClick} disabled={disabled}>
       {text}
     </button>
   );
